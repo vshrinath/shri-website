@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import Timeline from "../components/library/Timeline.astro";
+
+const entries = await getCollection("library");
+const items = [...entries].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base title="Library — Writing & Press">
+  <h1 class="tracking-tight">Writing & Press</h1>
+  <p class="mt-2 text-gray-600">
+    A chronological log of articles, press quotes, interviews, and talks.
+  </p>
+
+  <Timeline entries={items} />
+</Base>

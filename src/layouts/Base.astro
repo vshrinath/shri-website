@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+const { title = "Shrinath V", description = "" } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Slabo:wght@600&family=Alan+Sans:wght@400&display=swap"
+    />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="min-h-screen bg-white text-gray-900 antialiased">
+    <header class="border-b">
+      <nav class="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
+        <a href="/" class="font-semibold">Shrinath V</a>
+        <div class="flex gap-6">
+          <a href="/advisory" class="hover:underline">Advisory</a>
+          <a href="/coaching" class="hover:underline">Coaching</a>
+          <a href="/library" class="hover:underline">Library</a>
+          <a href="/about" class="hover:underline">About</a>
+          <a href="/contact" class="hover:underline">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <main class="mx-auto max-w-6xl px-4 py-16">
+      <slot /> <!-- page content gets injected here -->
+    </main>
+    <footer class="border-t">
+      <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-gray-500">
+        © {new Date().getFullYear()} Shrinath V
+      </div>
+    </footer>
+  </body>
+</html>
